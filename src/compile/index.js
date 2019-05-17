@@ -16,7 +16,7 @@ const debugRender = (error, options) => {
  * @param {?Object}       options  编译选项
  * @return {function}
  */
-const compile = (source, options = {}) => {
+const compile = async (source, options = {}) => {
     if (typeof source !== 'string') {
         options = source;
     } else {
@@ -80,6 +80,8 @@ const compile = (source, options = {}) => {
     let fn;
     const compiler = new Compiler(options);
 
+    // 解析远程数据
+    await compiler.initTokens();
     try {
         fn = compiler.build();
     } catch (error) {

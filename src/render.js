@@ -7,6 +7,10 @@ const compile = require('./compile');
  * @param   {?Object}           options 选项
  * @return  {string}            渲染好的字符串
  */
-const render = (source, data, options) => compile(source, options)(data);
+function render(source, data, options) {
+    return compile(source, options).then(fn => {
+        return fn(data);
+    });
+}
 
 module.exports = render;

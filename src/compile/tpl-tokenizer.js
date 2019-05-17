@@ -38,7 +38,7 @@ function Token(type, value, prevToken) {
  * @param {Object}      context
  * @return {Object[]}
  */
-const tplTokenizer = (source, rules, context = {}) => {
+const tplTokenizer = async (source, rules, context = {}) => {
     const tokens = [new Token(TYPE_STRING, source)];
 
     for (let i = 0; i < rules.length; i++) {
@@ -67,7 +67,7 @@ const tplTokenizer = (source, rules, context = {}) => {
 
                 prevToken = new Token(TYPE_EXPRESSION, match[0], prevToken);
                 match[0] = wrapString(prevToken);
-                prevToken.script = rule.use.apply(context, match);
+                prevToken.script = await rule.use.apply(context, match);
                 substitute.push(prevToken);
 
                 index = match.index + match[0].length;

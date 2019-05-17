@@ -108,12 +108,20 @@ class Compiler {
         }
 
         this.source = source;
-        this.getTplTokens(source, options.rules, this).forEach(tokens => {
-            if (tokens.type === tplTokenizer.TYPE_STRING) {
-                this.parseString(tokens);
-            } else {
-                this.parseExpression(tokens);
-            }
+    }
+
+    /**
+     * 解析异步模块的use方法
+     */
+    initTokens() {
+        return this.getTplTokens(this.source, this.options.rules, this).then(tplTokens => {
+            tplTokens.forEach(tokens => {
+                if (tokens.type === tplTokenizer.TYPE_STRING) {
+                    this.parseString(tokens);
+                } else {
+                    this.parseExpression(tokens);
+                }
+            });
         });
     }
 

@@ -1,5 +1,5 @@
 {
-  "name": "art-template",
+  "name": "art-template-async",
   "typings": "index.d.ts",
   "description": "JavaScript Template Engine",
   "homepage": "http://aui.github.com/art-template/",
@@ -13,7 +13,7 @@
     "url": "git://github.com/aui/art-template.git"
   },
   "scripts": {
-    "build": "npm run build-lib && npm run build-web",
+    "build": "npm run build-lib",
     "build-lib": "rm -rf lib && babel src --out-dir lib",
     "build-web": "export NODE_ENV=production && webpack",
     "dev": "babel src --watch --out-dir lib",
