@@ -3,7 +3,7 @@
   "typings": "index.d.ts",
   "description": "JavaScript Template Engine",
   "homepage": "http://aui.github.com/art-template/",
-  "version": "4.13.2",
+  "version": "4.13.4",
   "keywords": [
     "template"
   ],
@@ -22,7 +22,7 @@
   },
   "main": "index.js",
   "files": [
-    "lib/",
+    "src/",
     "index.d.ts"
   ],
   "engines": {

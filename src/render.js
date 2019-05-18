@@ -8,7 +8,7 @@ const compile = require('./compile');
  * @return  {string}            渲染好的字符串
  */
 function render(source, data, options) {
-    return compile(source, options).then(fn => {
+    return compile(source, options, data).then(fn => {
         return fn(data);
     });
 }

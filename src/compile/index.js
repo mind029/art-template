@@ -16,7 +16,7 @@ const debugRender = (error, options) => {
  * @param {?Object}       options  编译选项
  * @return {function}
  */
-const compile = async (source, options = {}) => {
+const compile = async (source, options = {}, appContext) => {
     if (typeof source !== 'string') {
         options = source;
     } else {
@@ -26,6 +26,9 @@ const compile = async (source, options = {}) => {
     // 合并默认配置
     options = defaults.$extend(options);
     source = options.source;
+
+    // 把上下文设置到参数里。
+    options.appContext = appContext;
 
     // debug 模式
     /* istanbul ignore if */
